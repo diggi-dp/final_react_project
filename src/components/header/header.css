@@ -1,0 +1,29 @@
+
+
+.header{
+    text-align: center;
+    background-color: #567086;
+    color: white !important;
+    width: 100%;
+}
+
+.header span{
+    font-weight: 600;
+    margin-left: -30px;
+    color: #fff;
+}
+
+.list a{
+    color: white;
+    background-color: #567086;
+}
+
+.list a:hover{
+    color: #f5a623;
+}
+
+.logout{
+position: relative;
+top: 10px;
+}
+
