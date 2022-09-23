@@ -9,20 +9,24 @@ function LoginPage(props) {
     const [password, setpassword] = useState('')
 
     const navigate = useNavigate();
-    
-    const {setIsLoggedIn} = props
-    
+
+    const { setIsLoggedIn } = props
+
     const onSubmitHandler = (e) => {
         e.preventDefault();
         if (name !== '' && password !== '') {
-            if (name === password) {
-                localStorage.setItem("userName", name)
-                localStorage.setItem("password", password)
-                setIsLoggedIn(true)
-                navigate('/dashboard');
-            }
-            else {
-                alert('Please enter valid credentials!')
+            if (name.length >= 8 && password.length >= 8) {
+                if (name === password) {
+                    localStorage.setItem("userName", name)
+                    localStorage.setItem("password", password)
+                    setIsLoggedIn(true)
+                    navigate('/dashboard');
+                }
+                else {
+                    alert('Please enter valid credentials!')
+                }
+            }else{
+                alert('Username and Password must have 8 characters.')
             }
         }
     }
@@ -50,9 +54,9 @@ function LoginPage(props) {
                             </button>
                         </div>
                     </form>
-                        <button onClick={()=>{alert('Enter Password Same as UserName')}} className={`mt-4 btn-block text-uppercase ${style.btn}`}>
-                            Forgot your password?
-                        </button>
+                    <button onClick={() => { alert('Enter Password Same as UserName') }} className={`mt-4 btn-block text-uppercase ${style.btn}`}>
+                        Forgot your password?
+                    </button>
 
                 </div>
             </center>

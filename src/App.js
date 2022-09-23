@@ -1,14 +1,15 @@
 import React from 'react';
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import './App.css';
 import Header from './components/header/Header';
 import LoginPage from './components/loginpage/LoginPage';
 import Footer from './components/footer/Footer'
 import Dashboard from './components/dashboard/Dashboard'
-import Products from './components/products/Products'
+import ProductTable from './components/products/ProductTable';
 import Accounts from './components/accounts/Accounts'
 import AddProduct from './components/products/AddProduct';
-import axios from "axios";
+// import axios from "axios";
+import { getApiData } from "./index";
 import {
   BrowserRouter as Router,
   Routes,
@@ -17,15 +18,36 @@ import {
 } from "react-router-dom";
 
 
+
+
 function App() {
   const [isloggedIn, setIsLoggedIn] = useState(false)
-  axios
-    .get('https://reactmusicplayer-ab9e4.firebaseio.com/project-data.json')
-    .then(res => localStorage.setItem('data', JSON.stringify(res.data)))
-    .catch(err => console.log(err))
 
+  // const getdata = ()=>{
+  //   axios
+  //     .get('https://reactmusicplayer-ab9e4.firebaseio.com/project-data.json')
+  //     .then(res => localStorage.setItem('data', JSON.stringify(res.data)))
+  //     .catch(err => console.log(err))
+  // }
 
-  // console.log(JSON.parse(localStorage.getItem('data')))
+  // useEffect(()=>{
+  //   getdata();
+  // },[])
+
+  const getdata = () => {
+    getApiData()
+      .then((data) => {
+        localStorage.setItem('data', JSON.stringify(data))
+      })
+      .catch((err) => {
+        return err
+      });
+  };
+
+  useEffect(()=>{
+    getdata();
+  },[])
+    
 
   return (
     <>
@@ -34,10 +56,10 @@ function App() {
         <Routes>
           <Route exact path='/' element={<LoginPage isloggedIn={isloggedIn} setIsLoggedIn={setIsLoggedIn} />}></Route>
           <Route exact path='/dashboard' element={isloggedIn ? <Dashboard /> : <Navigate replace to={"/"} />}></Route>
-          <Route exact path='/products' element={isloggedIn ? <Products /> : <Navigate replace to={"/"} />}></Route>
+          <Route exact path='/products' element={isloggedIn ? <ProductTable /> : <Navigate replace to={"/"} />}></Route>
           <Route exact path='/accounts' element={isloggedIn ? <Accounts /> : <Navigate replace to={"/"} />}></Route>
           <Route exact path='/loginPage' element={<LoginPage isloggedIn={isloggedIn} setIsLoggedIn={setIsLoggedIn} />}></Route>
-          <Route exact path='/addproducts' element={<AddProduct />}></Route>
+          <Route exact path='/addproducts' element={isloggedIn ? <AddProduct /> : <Navigate replace to={"/"} />}></Route>
         </Routes>
         <Footer />
       </Router>

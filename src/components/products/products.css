@@ -126,3 +126,16 @@ input[type="checkbox"]:checked {
   color: #fff;
   margin-bottom: 1.3rem;
 }
+.form_control {
+  padding: 13px;
+  border-radius: 0;
+  height: 50px;
+  width: 88%;
+  border: none;
+  background-color: #54657d;
+  color: #fff;
+}
+
+.modal-content{
+  background-color: #455c71;
+}

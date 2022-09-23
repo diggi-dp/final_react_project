@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './dashboard.css'
 import LatestHits from './LatestHits';
 import Notification from './Notification';
@@ -8,7 +8,12 @@ import StorageInfo from './StorageInfo';
 
 function Dashboard() {
     const data = JSON.parse(localStorage.getItem('data'))
-    // console.log(data.dasbhoardPage.orders)
+   
+    //useEffect for page should always start from the top 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
     return (
         <>
             <center><p className=" text-white d-flex align-items-start h6 mx-5 mt-5 mb-4">Welcome back, <strong>Admin</strong></p>
