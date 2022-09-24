@@ -12,7 +12,7 @@ function Header(props) {
         localStorage.removeItem('userName')
         localStorage.removeItem('password')
         setIsLoggedIn(false);
-        for(let ele of currentClass){
+        for (let ele of currentClass) {
             ele.classList.remove("active")
         }
     }
@@ -20,11 +20,9 @@ function Header(props) {
     const onClickActive = (e) => {
         if (isloggedIn) {
             for (let i = 0; i < currentClass.length; i++) {
-                if (e.target.parentNode.parentNode.id === currentClass[i].id) {
+                if (e.target.parentNode.id === currentClass[i].id) {
                     for (let item of currentClass) {
-                        if (item.classList.contains("active")) {
-                            item.classList.remove("active")
-                        }
+                        item.classList.remove("active")
                     }
                     currentClass[i].classList.add("active");
                 }
@@ -35,26 +33,26 @@ function Header(props) {
     return (
         <>
             <header className="d-flex justify-content-around header">
-                <Link to="/dashboard" className="d-flex align-items-center mb-3 text-dark text-decoration-none">
+                <Link to="#" className="d-flex align-items-center mb-3 text-dark text-decoration-none">
                     <svg className="bi me-2" width="40" height="32"></svg>
                     <span className="fs-4">PRODUCT ADMIN</span>
                 </Link>
 
                 <ul className="nav nav-pills list" >
-                    <li id='1' className="nav-item " onClick={onClickActive}>
-                        <Link id='1' to="/dashboard" className="nav-link py-4" aria-current="page">
+                    <li id='1' className={`nav-item py-3 ${isloggedIn ? "active" : ""}`} onClick={onClickActive}>
+                        <Link id='1' to="/dashboard" className="nav-link" aria-current="page">
                             <i id='1' className="fas fa-2x fa-tachometer-alt"></i>
                             <div>Dashboard</div>
                         </Link>
                     </li>
-                    <li id='2' className="nav-item" onClick={onClickActive}>
-                        <Link id='2' to="/products" className="nav-link py-4">
+                    <li id='2' className="nav-item py-3" onClick={onClickActive}>
+                        <Link id='2' to="/products" className="nav-link">
                             <i id='2' className="fa-solid fa-2x fa-cart-shopping"></i>
                             <div>Products</div>
                         </Link>
                     </li>
-                    <li id='3' className="nav-item" onClick={onClickActive}>
-                        <Link id='3' to="/accounts" className="nav-link py-4 ">
+                    <li id='3' className="nav-item py-3" onClick={onClickActive}>
+                        <Link id='3' to="/accounts" className="nav-link ">
                             <i id='3' className="fa-solid fa-2x fa-user"></i>
                             <div>Accounts</div>
                         </Link>
@@ -64,7 +62,7 @@ function Header(props) {
                 {isloggedIn &&
                     <ul className="navbar-nav logout list">
                         <li onClick={() => onLoggedinHandler()}>
-                            <Link className="nav-link d-block align-middle" to="/loginpage">
+                            <Link className="nav-link d-block align-middle" to="/">
                                 Admin, <b>Logout</b>
                             </Link>
                         </li>

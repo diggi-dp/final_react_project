@@ -47,7 +47,7 @@ function App() {
           <Route exact path='/dashboard' element={isloggedIn ? <Dashboard /> : <Navigate replace to={"/"} />}></Route>
           <Route exact path='/products' element={isloggedIn ? <ProductTable /> : <Navigate replace to={"/"} />}></Route>
           <Route exact path='/accounts' element={isloggedIn ? <Accounts /> : <Navigate replace to={"/"} />}></Route>
-          <Route exact path='/loginPage' element={<LoginPage isloggedIn={isloggedIn} setIsLoggedIn={setIsLoggedIn} />}></Route>
+          {/* <Route exact path='/loginPage' element={<LoginPage isloggedIn={isloggedIn} setIsLoggedIn={setIsLoggedIn} />}></Route> */}
           <Route exact path='/addproducts' element={isloggedIn ? <AddProduct /> : <Navigate replace to={"/"} />}></Route>
         </Routes>
         <Footer />
