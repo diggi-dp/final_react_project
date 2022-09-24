@@ -7,9 +7,9 @@ import axios from "axios";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    // <StrictMode>
+  
         <App />
-    // </StrictMode>
+
 );
 
 

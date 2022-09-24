@@ -17,7 +17,6 @@ function LatestHits(props) {
             {
                 label: "Featured",
                 data: featured,
-                // textColor: "white",
                 borderColor: "#4bc0c0",
                 tension: 0.4,
                 pointstyle: 'rect',

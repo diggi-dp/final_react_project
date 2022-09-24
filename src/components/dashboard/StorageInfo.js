@@ -28,12 +28,21 @@ export default function StorageInfo(props) {
         }]
     })
 
+    const [options, setoptions] = useState({
+        plugins: {
+                legend:{
+                    labels:{
+                        color:'white',
+                    }
+                },
+        }
+    })
 
     return (
         <>
             <div style={{ width: '70%', height: '70%', margin : '0', marginBottom:'20px' }}>
             <h4 className='heading'>Storage Information</h4>
-                <Pie data={myData}  />
+                <Pie data={myData} options={options} />
             </div>
         </>
     )

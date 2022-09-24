@@ -23,17 +23,6 @@ import {
 function App() {
   const [isloggedIn, setIsLoggedIn] = useState(false)
 
-  // const getdata = ()=>{
-  //   axios
-  //     .get('https://reactmusicplayer-ab9e4.firebaseio.com/project-data.json')
-  //     .then(res => localStorage.setItem('data', JSON.stringify(res.data)))
-  //     .catch(err => console.log(err))
-  // }
-
-  // useEffect(()=>{
-  //   getdata();
-  // },[])
-
   const getdata = () => {
     getApiData()
       .then((data) => {
