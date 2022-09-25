@@ -8,8 +8,7 @@ import Dashboard from './components/dashboard/Dashboard'
 import ProductTable from './components/products/ProductTable';
 import Accounts from './components/accounts/Accounts'
 import AddProduct from './components/products/AddProduct';
-// import axios from "axios";
-import { getApiData } from "./index";
+import { getApiData } from "../src/components/services/index";
 import {
   BrowserRouter as Router,
   Routes,
@@ -47,7 +46,6 @@ function App() {
           <Route exact path='/dashboard' element={isloggedIn ? <Dashboard /> : <Navigate replace to={"/"} />}></Route>
           <Route exact path='/products' element={isloggedIn ? <ProductTable /> : <Navigate replace to={"/"} />}></Route>
           <Route exact path='/accounts' element={isloggedIn ? <Accounts /> : <Navigate replace to={"/"} />}></Route>
-          {/* <Route exact path='/loginPage' element={<LoginPage isloggedIn={isloggedIn} setIsLoggedIn={setIsLoggedIn} />}></Route> */}
           <Route exact path='/addproducts' element={isloggedIn ? <AddProduct /> : <Navigate replace to={"/"} />}></Route>
         </Routes>
         <Footer />
